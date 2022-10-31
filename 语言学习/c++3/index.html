@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>c++学习3数据结构 | FFF</title><meta name="keywords" content="c++"><meta name="author" content="FFF"><meta name="copyright" content="FFF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="线性表vector动态数组（1）vector a 定义一个int类型的vector一维数组。 （2）vector a(10) 定义一个int类型的长度为十的vector一维数组。 （3）vector a(10)(1) 定义一个int类型的长度为十初值为一的vector一维数组。 （4）vector&lt;vector &gt; a 定义一个int类型的vector二维数组，要注意的是，在里面的ve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++学习3数据结构">
+<meta property="og:url" content="https://fffjay.fun/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/index.html">
+<meta property="og:site_name" content="FFF">
+<meta property="og:description" content="线性表vector动态数组（1）vector a 定义一个int类型的vector一维数组。 （2）vector a(10) 定义一个int类型的长度为十的vector一维数组。 （3）vector a(10)(1) 定义一个int类型的长度为十初值为一的vector一维数组。 （4）vector&lt;vector &gt; a 定义一个int类型的vector二维数组，要注意的是，在里面的ve">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)">
+<meta property="article:published_time" content="2022-10-27T03:18:55.851Z">
+<meta property="article:modified_time" content="2022-10-27T13:24:24.123Z">
+<meta property="article:author" content="FFF">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://fffjay.fun/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'c++学习3数据结构',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-27 21:24:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FFF</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">c++学习3数据结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-27T03:18:55.851Z" title="发表于 2022-10-27 11:18:55">2022-10-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-27T13:24:24.123Z" title="更新于 2022-10-27 21:24:24">2022-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/">语言学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="c++学习3数据结构"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><h2 id="vector动态数组"><a href="#vector动态数组" class="headerlink" title="vector动态数组"></a>vector动态数组</h2><p>（1）vector<int> a 定义一个int类型的vector一维数组。</p>
+<p>（2）vector<int> a(10) 定义一个int类型的长度为十的vector一维数组。</p>
+<p>（3）vector<int> a(10)(1) 定义一个int类型的长度为十初值为一的vector一维数组。</p>
+<p>（4）vector&lt;vector<int> &gt; a 定义一个int类型的vector二维数组，要注意的是，在里面的vecotr<int>后面要加一个空格，否则会被认为是移位运算符而编译错误。</p>
+<p>（5）a.begin() 返回数组a的首元素的指针（迭代器）。</p>
+<p>（6）a.end() 返回数组a的末尾元素的下一个元素的指针（迭代器）。</p>
+<p>（7）a.size() 数组中的元素个数</p>
+<p>（8）a.empty() 判断数组是否为空</p>
+<p>（9）a.clear() 清空数组中的元素</p>
+<p>（10）a.insert(a.begin(),1000) 将1000插入到向量a的起始位置前</p>
+<p>（11）a.insert(a.begin(),3,1000); 将1000分别插入到向量元素位置的0-2处(共3个元素)</p>
+<p>（12）a.erase(a.begin()); 将起始位置的元素删除</p>
+<p>（13）a.erase(a.begin(),a.begin()+3) ; 将(a.begin(),a.begin()+3)之间的元素删除</p>
+<p>（14）a.push_back(1) 将1放到数组尾部</p>
+<p>（15）a[1] 数组中的下标为1的值</p>
+<p>vector和数组相比，vector可以改变长度，清空的时间复杂度为O(1)。</p>
+<p>例如及包柜一题中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(bao[i].size()&lt;=j)</span><br><span class="line">				bao[i].resize(j+1);</span><br></pre></td></tr></table></figure>
+
+<p>提现了动态数组的特点</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p><strong>1、栈(Stack)是一种线性存储结构，它具有如下特点：</strong></p>
+<p>（1）栈中的数据元素遵守“<em><strong>*先进后出*</strong></em>“(First In Last Out)的原则，简称FILO结构。（****后进先出****的叫法，也是可以的）</p>
+<p>（2）限定只能在栈顶进行插入和删除操作。</p>
+<p><strong>2、栈的相关概念：</strong></p>
+<p>（1）栈顶与栈底：允许元素插入与删除的一端称为栈顶，另一端称为栈底。</p>
+<p>（2）压栈：栈的插入操作，叫做进栈，也称压栈、入栈。</p>
+<p>（3）弹栈：栈的删除操作，也叫做出栈。</p>
+<p><strong>3、栈的常见分类：</strong></p>
+<p>（1）基于数组的栈——以数组为底层数据结构时，通常以数组头为栈底，数组头到数组尾为栈顶的生长方向</p>
+<p>（2）基于单链表的栈——以链表为底层的数据结构时，以链表头为栈顶，便于节点的插入与删除，压栈产生的新节点将一直出现在链表的头部</p>
+<p>使用标准库的栈时, 应包含相关头文件，在栈中应包含头文件： #include&lt; stack &gt; 。定义：stack&lt; int &gt; s;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s.empty();         //如果栈为空则返回true, 否则返回false;</span><br><span class="line">s.size();          //返回栈中元素的个数</span><br><span class="line">s.top();           //返回栈顶元素, 但不删除该元素</span><br><span class="line">s.pop();           //弹出栈顶元素, 但不返回其值</span><br><span class="line">s.push();          //将元素压入栈顶</span><br></pre></td></tr></table></figure>
+
+<p>输出栈的最小值</p>
+<p>使用一个辅助栈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	stack&lt;int&gt; date;</span><br><span class="line">	stack&lt;int&gt; minn;</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int a;</span><br><span class="line">		cin&gt;&gt;a;</span><br><span class="line">		date.push(a);</span><br><span class="line">		if(minn.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			minn.push(a);</span><br><span class="line">		&#125;</span><br><span class="line">		if(!minn.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			if(a&lt;minn.top())</span><br><span class="line">			&#123;</span><br><span class="line">				minn.pop();</span><br><span class="line">				minn.push(a);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;minn.top();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p><strong>1、*<em>队列（Queue）与栈一样，是一种线性存储结构，它具有如下特点：*</em></strong></p>
+<p>（1）队列中的数据元素遵循“<strong>先进先出</strong>”（First In First Out）的原则，简称<strong>FIFO</strong>结构；</p>
+<p>（2）在队尾添加元素，在队头删除元素。</p>
+<p><strong>2、队列的相关概念：</strong></p>
+<p>（1）队头与队尾： 允许元素插入的一端称为队尾，允许元素删除的一端称为队头；</p>
+<p>（2）入队：<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%98%9F%E5%88%97&spm=1001.2101.3001.7020">队列</a>的插入操作；</p>
+<p>（3）出队：队列的删除操作。</p>
+<p><strong>3、队列的操作：</strong></p>
+<p>（1）入队： 通常命名为push()</p>
+<p>（2）出队： 通常命名为pop()</p>
+<p>（3）求队列中元素个数</p>
+<p>（4）判断队列是否为空</p>
+<p>（5）获取队首元素</p>
+<p><strong>4、队列的分类：</strong></p>
+<p>（1）基于数组的循环队列（循环队列）</p>
+<p>（2）基于链表的队列（链队列）</p>
+<p>5、实例分析</p>
+<pre><code>     C++队列queue模板类的定义在&lt;queue&gt;头文件中,queue 模板类需要两个模板参数，一个是元素类型，一个容器类型，元素类型是必要的，容器类型是可选的，默认为deque 类型。C++队列Queue是一种容器适配器，它给予程序员一种先进先出(FIFO)的数据结构。
+</code></pre>
+<p>那么我们如何判断队列是空队列还是已满呢？</p>
+<p>  a、栈空： 队首标志&#x3D;队尾标志时，表示栈空。</p>
+<p>  b、栈满 : 队尾+1 &#x3D; 队首时，表示栈满。</p>
+<p>使用标准库的队列时, 应包含相关头文件，在栈中应包含头文件： #include&lt; queue&gt; 。定义：queue&lt; int &gt; q;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">q.empty()               如果队列为空返回true，否则返回false</span><br><span class="line">q.size()                返回队列中元素的个数</span><br><span class="line">q.pop()                 删除队列首元素但不返回其值</span><br><span class="line">q.front()               返回队首元素的值，但不删除该元素</span><br><span class="line">q.push()                在队尾压入新元素</span><br><span class="line">q.back()                返回队列尾元素的值，但不删除该元素</span><br></pre></td></tr></table></figure>
+
+<p>以数组作为底层数据结构时，一般讲队列实现为循环队列。这是因为队列在顺序存储上的不足：每次从数组头部删除元素（出队）后，需要将头部以后的所有元素往前移动一个位置，这是一个时间复杂度为O（n）的操作。</p>
+<p> <em><strong>*C语言中，不能用动态分配的一维数组来实现循环队列，如果用户的应用程序中设有循环队列，则必须为它设定一个最大队列长度；如果用户无法预估所用队列的最大长度，则宜采用链队列。*</strong></em></p>
+<p>定义front为队列头元素的位置，rear为队列尾元素的位置，MAXSIZE为循环队列的最大长度。注意以下几点，循环队列迎刃而解：</p>
+<p>A.  求元素的个数：(rear - front + MAXSIZE) % MAXSIZE<br>B.  front&#x2F;rear指向逻辑的下一个空间  front &#x3D;（front+1)%MAXSIZE，rear &#x3D; (rear+1)%MAXSIZE<br>C.  判空：front &#x3D;&#x3D; rear<br>D.  判满：(rear+1+MAXSZIE) &#x3D;&#x3D; front<br>😨</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fffjay.fun">FFF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fffjay.fun/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/">https://fffjay.fun/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fffjay.fun" target="_blank">FFF</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/c/">c++</a></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/"><img class="prev-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">逆向2</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/"><img class="next-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">c++学习2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++/" title="c++学习1入门与初级算法"><img class="cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-22</div><div class="title">c++学习1入门与初级算法</div></div></a></div><div><a href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2"><img class="cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-27</div><div class="title">c++学习2</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FFF</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vector%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">vector动态数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">1.3.</span> <span class="toc-text">队列</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向2"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向2"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向2">逆向2</a><time datetime="2022-10-29T02:56:29.633Z" title="发表于 2022-10-29 10:56:29">2022-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/" title="c++学习3数据结构"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习3数据结构"/></a><div class="content"><a class="title" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/" title="c++学习3数据结构">c++学习3数据结构</a><time datetime="2022-10-27T03:18:55.851Z" title="发表于 2022-10-27 11:18:55">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5087b29d881b11ebb6edd017c2d2eca2.png)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习2"/></a><div class="content"><a class="title" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2">c++学习2</a><time datetime="2022-10-27T03:16:26.260Z" title="发表于 2022-10-27 11:16:26">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/" title="Linux学习1"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux学习1"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/" title="Linux学习1">Linux学习1</a><time datetime="2022-10-25T09:39:08.139Z" title="发表于 2022-10-25 17:39:08">2022-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" title="计算机科学"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/f7351e3b973e4530bbebfaed297df73b.jpg)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机科学"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" title="计算机科学">计算机科学</a><time datetime="2022-10-24T15:07:29.176Z" title="发表于 2022-10-24 23:07:29">2022-10-24</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/cb6a04e0c76f42828ab173cf0555a6a4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By FFF</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '2m4wH0o4DvcjtnTy0Fj6oeI4-gzGzoHsz',
+      appKey: '2jh3Y6EmI8jS0fCh0Ap1Ki3N',
+      avatar: 'monsterid',
+      serverURLs: 'https://2m4wh0o4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
