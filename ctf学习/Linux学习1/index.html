@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux学习1 | FFF</title><meta name="keywords" content="Linux"><meta name="author" content="FFF"><meta name="copyright" content="FFF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux-轻巧且稳定1.有很多的小程序，每个小程序完成单一的功能，实现复杂的任务 2.尽量避免捕获用户接口，用户与内核不直接接触，通过shell传递和反馈信息 3.配置文件为纯文本格式(可以用文本编辑器编辑vim) 网络连接的三种模式桥接模式 优点：方便 虚拟系统可以和外部系统通讯 缺点：容易造成ip冲突 NAT模式 网络地址转换模式在本体的主机上产生另外一个ip，之间形成一个独立的可通讯的联系">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux学习1入门 | FFF</title><meta name="keywords" content="Linux"><meta name="author" content="FFF"><meta name="copyright" content="FFF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux-轻巧且稳定1.有很多的小程序，每个小程序完成单一的功能，实现复杂的任务 2.尽量避免捕获用户接口，用户与内核不直接接触，通过shell传递和反馈信息 3.配置文件为纯文本格式(可以用文本编辑器编辑vim) 网络连接的三种模式桥接模式 优点：方便 虚拟系统可以和外部系统通讯 缺点：容易造成ip冲突 NAT模式 网络地址转换模式在本体的主机上产生另外一个ip，之间形成一个独立的可通讯的联系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux学习1">
+<meta property="og:title" content="Linux学习1入门">
 <meta property="og:url" content="https://fffjay.fun/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/index.html">
 <meta property="og:site_name" content="FFF">
 <meta property="og:description" content="Linux-轻巧且稳定1.有很多的小程序，每个小程序完成单一的功能，实现复杂的任务 2.尽量避免捕获用户接口，用户与内核不直接接触，通过shell传递和反馈信息 3.配置文件为纯文本格式(可以用文本编辑器编辑vim) 网络连接的三种模式桥接模式 优点：方便 虚拟系统可以和外部系统通讯 缺点：容易造成ip冲突 NAT模式 网络地址转换模式在本体的主机上产生另外一个ip，之间形成一个独立的可通讯的联系">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png">
 <meta property="article:published_time" content="2022-10-25T09:39:08.139Z">
-<meta property="article:modified_time" content="2022-11-13T02:32:41.451Z">
+<meta property="article:modified_time" content="2022-11-16T13:05:55.447Z">
 <meta property="article:author" content="FFF">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -48,12 +48,12 @@
   islazyload: false,
   isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Linux学习1',
+  title: 'Linux学习1入门',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-11-13 10:32:41'
+  postUpdate: '2022-11-16 21:05:55'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -142,7 +142,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FFF</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux学习1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-25T09:39:08.139Z" title="发表于 2022-10-25 17:39:08">2022-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-13T02:32:41.451Z" title="更新于 2022-11-13 10:32:41">2022-11-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf%E5%AD%A6%E4%B9%A0/">ctf学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux学习1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-轻巧且稳定"><a href="#Linux-轻巧且稳定" class="headerlink" title="Linux-轻巧且稳定"></a>Linux-轻巧且稳定</h1><p>1.有很多的小程序，每个小程序完成单一的功能，实现复杂的任务</p>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FFF</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux学习1入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-25T09:39:08.139Z" title="发表于 2022-10-25 17:39:08">2022-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-16T13:05:55.447Z" title="更新于 2022-11-16 21:05:55">2022-11-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf%E5%AD%A6%E4%B9%A0/">ctf学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux学习1入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-轻巧且稳定"><a href="#Linux-轻巧且稳定" class="headerlink" title="Linux-轻巧且稳定"></a>Linux-轻巧且稳定</h1><p>1.有很多的小程序，每个小程序完成单一的功能，实现复杂的任务</p>
 <p>2.尽量避免捕获用户接口，用户与内核不直接接触，通过shell传递和反馈信息</p>
 <p>3.配置文件为纯文本格式(可以用文本编辑器编辑vim)</p>
 <h1 id="网络连接的三种模式"><a href="#网络连接的三种模式" class="headerlink" title="网络连接的三种模式"></a>网络连接的三种模式</h1><h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221025175038122.png" alt="image-20221025175038122"></p>
@@ -154,7 +154,8 @@
 <p>虚拟机可通过代理到外部，而外部到不了虚拟机</p>
 <h2 id="主机模式"><a href="#主机模式" class="headerlink" title="主机模式"></a>主机模式</h2><p>仅与本地物理通讯，不可上网。</p>
 <h1 id="虚拟机克隆"><a href="#虚拟机克隆" class="headerlink" title="虚拟机克隆"></a>虚拟机克隆</h1><p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221025185400089.png" alt="image-20221025185400089"></p>
-<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><p>基本介绍</p>
+<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><p>FHS标准：希望用户可以了解已经安装的程序在哪个目录下</p>
+<p>基本介绍</p>
 <ol>
 <li>linux的文件系统是采用级层式的树状目录结构，在此结构中的最上层是根目录“&#x2F;”，然后在此目录下再创建其他的目录。</li>
 <li>记住一句经典的话：<strong>在Linux的世界里，一切皆文件</strong> 😀</li>
@@ -169,10 +170,15 @@
 <blockquote>
 <p>Binary的缩写，这个目录存放着最经常使用的命令</p>
 </blockquote>
-<p>&#x2F;usr&#x2F;bin  &#x2F;usr&#x2F;local&#x2F;bin</p>
+<p>&#x2F;usr&#x2F;bin  普通用户使用的命令，和&#x2F;bin 区别是否与开机有关</p>
+<p> &#x2F;usr&#x2F;local&#x2F;bin </p>
 <p>&#x2F;sbin</p>
-<p>&#x2F;usr&#x2F;sbin</p>
+<p>&#x2F;usr&#x2F;sbin 网络服务器命令</p>
 <p>&#x2F;usr&#x2F;local&#x2F;sbin</p>
+<p>&#x2F;usr&#x2F;lib和&#x2F;usr&#x2F;lib64：包含各种应用程序函数库</p>
+<p>&#x2F;usr&#x2F;share：存放共享文件目录(在线帮助文件，杂项，时区)</p>
+<p>&#x2F;usr&#x2F;include ：存放程序开发头文件</p>
+<p>&#x2F;usr&#x2F;src：释放源代码目录</p>
 <blockquote>
 <p>s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。</p>
 </blockquote>
@@ -184,20 +190,23 @@
 <p><strong>&#x2F;root</strong></p>
 <p>该目录为系统管理员，也称作超级权限者的用户主目录</p>
 <p>&#x2F;lib 系统开机所需要的最基本的  动态连接共享库，其作用类似于Windows里的DLL文件，几乎所有的应用程序都需要用到这些共享库</p>
+<p>&#x2F;lib&#x2F;modules:存放内核相关的模块(驱动程序等)</p>
 <p>&#x2F;lost+found </p>
 <p>这个目录下一般情况是空的，当系统非法关机后，这里就存放了一些文件。</p>
 <p><strong>&#x2F;etc</strong></p>
 <p>所有的系统管所需要的配置文件和子目录</p>
 <p>例如安装了mysql数据库 my.conf</p>
-<p>&#x2F;<strong>usr</strong></p>
+<p>&#x2F;<strong>usr</strong> unix software resource  存放安装的应用程序</p>
 <p>这是一个非常重要的目录，用户的程序和文件默认放在这个目录下，类似于Windows下的program files目录。</p>
 <p>&#x2F;*<em>boot</em></p>
 <p> Linux存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件</p>
 <p>&#x2F;proc  <strong>不能动</strong></p>
 <p>这个目录是一个虚拟的目录，他是系统内存的映射，访问这个目录来获取系统值。 </p>
+<p>伪文件系统，数据存放在内存中，存放关于进程的相关信息</p>
 <p>&#x2F;srv <strong>不能动</strong>  service的缩写，该目录存放一些服务器启动之后需要提取的数据</p>
-<p>&#x2F;sys <strong>不能动</strong> </p>
-<p>&#x2F;tmp 存放一些临时文件</p>
+<p>&#x2F;sys <strong>不能动</strong>  伪文件系统，存放在内存当中，记录了内核相关的信息，包括目前加载的内核文件和内核检测到的设备</p>
+<p>&#x2F;tmp 存放一些临时文件，所有用户都可以创建访问文件，每个用户只能删除自己的文件</p>
+<p>一个月清空一次</p>
 <p>&#x2F;dev 类似于Windows的设备管理器，八宿友的硬件用文件的形式存储。</p>
 <p><strong>&#x2F;media</strong> Linux系统会自动识别一些设备，例如光盘、光驱等等，当识别后，Linux会把识别的设备挂载到这个目录下</p>
 <p>&#x2F;<strong>mnt</strong> 系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将外部的存储挂载在&#x2F;mnt&#x2F;上，然后进入该目录就可以查看里面的内容了</p>
@@ -208,10 +217,18 @@
 <p>这是另一个给主机额外安装软件所安装的目录，一般是通过编译源码方式安装的程序</p>
 <p>与&#x2F;usr不同的是，这个是安装目录，usr是exe</p>
 <p><strong>&#x2F;var</strong></p>
-<p>这个目录中存放着不断扩充着的东西，习惯将经常被更改的目录放在这个目录下，包括各种日志文件</p>
+<p>这个目录中存放着不断扩充着的东西，习惯将经常被更改的目录放在这个目录下，包括各种日志文件，mail等</p>
+<p>&#x2F;var&#x2F;cache：存放应用程序运行时产生的缓存文件</p>
+<p>&#x2F;var&#x2F;lib：程序运行时，需要使用的数据文件的存放目录</p>
+<p>&#x2F;var&#x2F;lock：存放锁文件，设备或资源一次只能被一个应用程序使用，如果多使用程序会产生错误，因此要为设备或资源上锁</p>
+<p>&#x2F;var&#x2F;log：存放日志目录(系统，用户登录，服务日志)</p>
+<p>&#x2F;var&#x2F;mail：存放个人电子邮件(系统报警产生邮件信息)</p>
+<p>&#x2F;var&#x2F;run：存放应用程序运行时PID文件(进程号，pid结尾)</p>
+<p>&#x2F;var&#x2F;spool：存放队列数据，排队等待其他应用程序使用的数据，数据通常情况使用完成后会被删除</p>
 <p>&#x2F;selinux    security-enhanced linux</p>
 <p>SELinux是一种安全子系统，它能控制程序只能访问特定文件，有三种工作模式，可以自行设置</p>
 <p>类似于Windows的360等软件</p>
+<p>FHS规定：&#x2F;etc &#x2F;bin &#x2F;dev &#x2F;lib sbin 五个目录必须要和根目录位于同一文件系统</p>
 <h1 id="Linux远程登陆"><a href="#Linux远程登陆" class="headerlink" title="Linux远程登陆"></a>Linux远程登陆</h1><p> 在虚拟机中ifconfig 获得虚拟机ip</p>
 <blockquote>
 <p>建议用桥接模式</p>
@@ -301,7 +318,171 @@
 </blockquote>
 <p>效果相同(╹ڡ╹ )</p>
 <p>参数：命令作用的对象 </p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fffjay.fun">FFF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fffjay.fun/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/">https://fffjay.fun/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fffjay.fun" target="_blank">FFF</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/"><img class="prev-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">c++学习2</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"><img class="next-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机科学</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FFF</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E8%BD%BB%E5%B7%A7%E4%B8%94%E7%A8%B3%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text">Linux-轻巧且稳定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">网络连接的三种模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">桥接模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NAT%E6%A8%A1%E5%BC%8F-%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">NAT模式 网络地址转换模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">主机模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%8B%E9%9A%86"><span class="toc-number">3.</span> <span class="toc-text">虚拟机克隆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">Linux目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86"><span class="toc-number">5.</span> <span class="toc-text">Linux远程登陆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#xftp"><span class="toc-number">5.1.</span> <span class="toc-text">xftp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xshell"><span class="toc-number">5.2.</span> <span class="toc-text">xshell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim"><span class="toc-number">6.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%B8%8E%E7%99%BB%E9%99%86%E6%B3%A8%E9%94%80"><span class="toc-number">7.</span> <span class="toc-text">关机重启与登陆注销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="toc-number">8.</span> <span class="toc-text">命令提示符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%BB%88%E7%AB%AF"><span class="toc-number">9.</span> <span class="toc-text">Linux终端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%95%8C%E9%9D%A2"><span class="toc-number">10.</span> <span class="toc-text">Linux界面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E4%BD%BF%E7%94%A8%E5%87%AD%E8%AF%81"><span class="toc-number">11.</span> <span class="toc-text">Linux 使用凭证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">12.</span> <span class="toc-text">Linux命令格式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/ctfshow%E9%80%86%E5%90%91/" title="ctfshow-逆向"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfshow-逆向"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/ctfshow%E9%80%86%E5%90%91/" title="ctfshow-逆向">ctfshow-逆向</a><time datetime="2022-11-02T12:46:33.146Z" title="发表于 2022-11-02 20:46:33">2022-11-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向工具和bugkure刷题"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向工具和bugkure刷题"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向工具和bugkure刷题">逆向工具和bugkure刷题</a><time datetime="2022-10-29T02:56:29.633Z" title="发表于 2022-10-29 10:56:29">2022-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/" title="c++学习3数据结构"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习3数据结构"/></a><div class="content"><a class="title" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/" title="c++学习3数据结构">c++学习3数据结构</a><time datetime="2022-10-27T03:18:55.851Z" title="发表于 2022-10-27 11:18:55">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习2"/></a><div class="content"><a class="title" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2">c++学习2</a><time datetime="2022-10-27T03:16:26.260Z" title="发表于 2022-10-27 11:16:26">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/" title="Linux学习1"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux学习1"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/" title="Linux学习1">Linux学习1</a><time datetime="2022-10-25T09:39:08.139Z" title="发表于 2022-10-25 17:39:08">2022-10-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/cb6a04e0c76f42828ab173cf0555a6a4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By FFF</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+<h1 id="Linux高效获取命令帮助信息-一"><a href="#Linux高效获取命令帮助信息-一" class="headerlink" title="Linux高效获取命令帮助信息(一)"></a>Linux高效获取命令帮助信息(一)</h1><p>内核版本号：主.次.修订 3.6.28</p>
+<p>Linux系统不认识用户名，只认识UID</p>
+<h2 id="3A认证"><a href="#3A认证" class="headerlink" title="3A认证"></a>3A认证</h2><p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221114183455920.png" alt="image-20221114183455920"></p>
+<p>认证机制：</p>
+<p>​       密码认证	</p>
+<ol>
+<li>符合复杂性要求(数字，小写字母，大写字母，特殊符号至少三种)</li>
+<li>密码要足够长(至少7位)</li>
+<li>不要使用比较易记的密码，使用随机的字符</li>
+<li>定期更改密码</li>
+<li>重复密码的时间要长123 456 123 456间隔要长</li>
+</ol>
+<h2 id="Linux登录信息"><a href="#Linux登录信息" class="headerlink" title="Linux登录信息:"></a>Linux登录信息:</h2><h2 id="x2F-etc-x2F-issue"><a href="#x2F-etc-x2F-issue" class="headerlink" title="&#x2F;etc&#x2F;issue"></a>&#x2F;etc&#x2F;issue</h2><p>查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux命令分类："><a href="#Linux命令分类：" class="headerlink" title="Linux命令分类："></a>Linux命令分类：</h2><ul>
+<li>内部命令：shell自带的命令</li>
+<li>外部命令：在Linux文件系统中存在一个应用程序</li>
+</ul>
+<p>查看命令类型:</p>
+<h2 id="type-命令"><a href="#type-命令" class="headerlink" title="type 命令"></a>type 命令</h2><p>(    )is a shell buildin:buildin关键字说明该命令是内部命令</p>
+<p>(   )is &#x2F;bin&#x2F;mkdir:有路径显示(外部命令) </p>
+<h2 id="路径："><a href="#路径：" class="headerlink" title="路径："></a>路径：</h2><p>绝对路径：从根(&#x2F;)开始的路径是绝对路径 Windows中的根即C盘，D盘等，而Linux中的根只有一个</p>
+<p>相对路径：需要有参照点，以现在所处的工作目录为参照点</p>
+<p>. 代表当前路径.. 代表上一级路径 ~代表用的宿主目录</p>
+<h2 id="列出目录："><a href="#列出目录：" class="headerlink" title="列出目录："></a>列出目录：</h2><p>ls:list简写(命令字)</p>
+<h3 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a>ls -l</h3><p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221114192842314.png" alt="image-20221114192842314"></p>
+<p>第一位：文件类型</p>
+<ul>
+<li><p>-：代表普通文件 </p>
+<ul>
+<li><p>纯文本文件(ASCII):配置文件</p>
+</li>
+<li><p>二进制文件( binary file):命令</p>
+</li>
+<li><p>数据格式文件(data):&#x2F;var&#x2F;log&#x2F;wtmp</p>
+</li>
+</ul>
+</li>
+<li><p>d：代表目录  directory</p>
+</li>
+<li><p>设备文件</p>
+<ul>
+<li><p>b： 块设备  block  如硬盘，U盘等  一块一块的读取东西</p>
+</li>
+<li><p>c：字符设备  char  如键盘等  一个字符一个字符的读取，一次性读取，按顺序读取</p>
+</li>
+</ul>
+</li>
+<li><p>s： socket套接字文件  symbolic link file 用在网络上数据连接 ip+port</p>
+</li>
+<li><p>192.168.12.10:20</p>
+</li>
+<li><p>l：链接文件：软链接文件</p>
+</li>
+<li><p>p；特殊的文件类型，解决多个程序同时访问一个文件所造成的错误问题</p>
+</li>
+</ul>
+<p>第二到十位：权限位rwx：读写执行</p>
+<p>234位：文件属主权限  owner</p>
+<p>自个儿</p>
+<p>567位：文件属组权限  group</p>
+<p>家庭成员</p>
+<p>8910位：其他用户权限  other</p>
+<p>剩下的人</p>
+<p>tom登录：新建一个文件 a.txt文件属主tom</p>
+<p>1：代表文件硬链接的次数</p>
+<p>第一个root：代表文件属主  owner</p>
+<p>第二个root：代表文件属组  group</p>
+<p>1207 文件的大小</p>
+<p>Nov 6 18:51 文件的时间戳  文件最后被访问的时间戳</p>
+<p>文件的时间戳：</p>
+<ul>
+<li>access：访问的时间戳</li>
+<li>Modify：文件被修改的时间戳(修改文件数据，添加删除数据)</li>
+<li>change：文件被更改的时间戳(更改文件属性)</li>
+</ul>
+<p>查看时间戳命令</p>
+<p>stat 文件名</p>
+<p>ls -l</p>
+<p>什么都不加的话，会作用于当前的目录</p>
+<h3 id="ls-h"><a href="#ls-h" class="headerlink" title="ls -h"></a>ls -h</h3><p>为文件大小添加单位</p>
+<h3 id="ls-a"><a href="#ls-a" class="headerlink" title="ls -a"></a>ls -a</h3><p>显示目录下所有文件(包括 .  ..  和以.开头的隐藏文件)</p>
+<h3 id="ls-A"><a href="#ls-A" class="headerlink" title="ls -A"></a>ls -A</h3><p>和-a相同，但是不显示.和..</p>
+<h3 id="ls-R"><a href="#ls-R" class="headerlink" title="ls -R"></a>ls -R</h3><p><strong>递归</strong>显示目录中的内容(一并显示子目录中的所有内容)</p>
+<h3 id="ls-r"><a href="#ls-r" class="headerlink" title="ls -r"></a>ls -r</h3><p><strong>逆序</strong>显示文件目录内容</p>
+<h3 id="ls-i"><a href="#ls-i" class="headerlink" title="ls -i"></a>ls -i</h3><p>显示文件所在的i节点( index node)</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>环境变量：内存中的命名空间</p>
+<p>PATH变量：存放系统命令路径，以冒号隔开，每一个冒号就代表一个路径</p>
+<p>查看PATH变量 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+
+<p>注：Linux命令严格区分大小写</p>
+<p>随便输一个命令，如果该命令不存在</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221114195641438.png" alt="image-20221114195641438"></p>
+<p>如果在以上路径中没有找到相关命令(该命令为外部命令)</p>
+<p>提示用户<strong>command not found</strong></p>
+<p>如果一个命令在以上多个路径中存在，系统会按照<strong>从前往后的顺序</strong>查找，查找到该命令后，后面的路径不再查找</p>
+<p>hash：查看命令缓存及命中率</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221114200133144.png" alt="image-20221114200133144"></p>
+<h1 id="Linux高效获取命令帮助信息-二"><a href="#Linux高效获取命令帮助信息-二" class="headerlink" title="Linux高效获取命令帮助信息(二)"></a>Linux高效获取命令帮助信息(二)</h1><h2 id="Linux的帮助信息："><a href="#Linux的帮助信息：" class="headerlink" title="Linux的帮助信息："></a>Linux的帮助信息：</h2><p>内部命令：help  命令</p>
+<p>外部命令：命令 –help</p>
+<p>先type一下判断命令类型</p>
+<h3 id="man-：帮助"><a href="#man-：帮助" class="headerlink" title="man ：帮助"></a>man ：帮助</h3><p>语法：man  命令</p>
+<p>查看内部命令信息时显示的是bash帮助信息</p>
+<p>使用的时候可以用上下方向键翻行</p>
+<p>enter 向下翻行</p>
+<p>pgdn向下翻页</p>
+<p>pgup向上翻页</p>
+<p>&#x2F;word ：从上往下查找关键字</p>
+<p>?word:   从下往上查找关键字</p>
+<p>q：退出当前帮助信息</p>
+<p>man目录说明</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20221115184437238.png" alt="image-20221115184437238"></p>
+<ol>
+<li>普通用户命令 (&#x2F;bin &#x2F;usr&#x2F;bin &#x2F;usr&#x2F;local&#x2F;bin)</li>
+<li>系统调用库</li>
+<li>库调用</li>
+<li>设备或特殊文件 通常指硬件设备  &#x2F;dev</li>
+<li>查看配置文件格式</li>
+<li>游戏</li>
+<li>杂项</li>
+<li>管理命令  (&#x2F;sbin &#x2F;usr&#x2F;sbin &#x2F;usr&#x2F;local&#x2F;sbin) secret binary</li>
+</ol>
+<p>cd：change directory(切换目录)</p>
+<p>cd 不加选项，返回到当前用户的宿主目录</p>
+<p>cd -username 切换到username的宿主目录</p>
+<p>cd -返回到上一次的工作目录</p>
+<p>which 命令  查看命令所在的路径</p>
+<p>whatis:当打开操作系统一段时间后这个命令才可以使用，这个时间一般是七十分钟，该命令在系统启动大约70分钟后会生成whatis的数据库，如果时间太短，该命令不会执行，我们可以使用makewhatis 初始化该命令</p>
+<p>该命令的作用是查看命令所在的帮助信息的目录</p>
+<p>whatis查看该命令在哪几个目录级别中，级别如上八个</p>
+<p>man+级别+命令  来查看帮助信息</p>
+<p>man使用说明：</p>
+<p>NAME：命令名称及简要用法</p>
+<p>SYNOPSIS：语法格式，可能还包括一些选项的使用</p>
+<p>DESCREIPTION：命令或选项的详细说明</p>
+<p>Exit status：退出状态码</p>
+<p>AUTHOR：作者信息</p>
+<p>REPORTING BUGS(BUG)：发现BUG时如何反馈信息</p>
+<p>SEE ALSO ：另外参照的帮助信息</p>
+<p>COPYRIGHT：该命令的版权信息</p>
+<p>OPTIONS：说明该命令每一个选项的详细用法</p>
+<p>example：命令使用实例</p>
+<p>man手册页目录 &#x2F;usr&#x2F;share&#x2F;doc( 工作中主要查看内核信息)</p>
+<p>&lt;&gt;:必须使用的选项的或参数，不可以省略</p>
+<p>[]:可以省略的选项或参数 </p>
+<p>|：代表多选一</p>
+<p>…:代表可以使用多个选项或参数</p>
+<p>{}：分组，没有特殊意义</p>
+<p>info：在线查看帮助，注重于命令历史和版权信息</p>
+<p>pwd：print working directory </p>
+<p>显示当前所处的工作目录</p>
+<blockquote>
+<p>11-15</p>
+</blockquote>
+<h1 id="Linux根文件系统"><a href="#Linux根文件系统" class="headerlink" title="Linux根文件系统"></a>Linux根文件系统</h1><p>根目录下目录以及子目录的作用</p>
+<p>file：查看Linux中文件类型</p>
+<p>file 文件名</p>
+<p>在Linux文件名限制</p>
+<ol>
+<li>单个文件或目录的名称不能超过255字符</li>
+<li>文件名中不能包含特殊字符  &#x2F; . - + 等</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fffjay.fun">FFF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fffjay.fun/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/">https://fffjay.fun/ctf%E5%AD%A6%E4%B9%A0/Linux%E5%AD%A6%E4%B9%A01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fffjay.fun" target="_blank">FFF</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/"><img class="prev-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">c++学习2</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"><img class="next-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机科学</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FFF</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E8%BD%BB%E5%B7%A7%E4%B8%94%E7%A8%B3%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text">Linux-轻巧且稳定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">网络连接的三种模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">桥接模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NAT%E6%A8%A1%E5%BC%8F-%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">NAT模式 网络地址转换模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">主机模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%8B%E9%9A%86"><span class="toc-number">3.</span> <span class="toc-text">虚拟机克隆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">Linux目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86"><span class="toc-number">5.</span> <span class="toc-text">Linux远程登陆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#xftp"><span class="toc-number">5.1.</span> <span class="toc-text">xftp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xshell"><span class="toc-number">5.2.</span> <span class="toc-text">xshell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim"><span class="toc-number">6.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%B8%8E%E7%99%BB%E9%99%86%E6%B3%A8%E9%94%80"><span class="toc-number">7.</span> <span class="toc-text">关机重启与登陆注销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="toc-number">8.</span> <span class="toc-text">命令提示符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%BB%88%E7%AB%AF"><span class="toc-number">9.</span> <span class="toc-text">Linux终端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%95%8C%E9%9D%A2"><span class="toc-number">10.</span> <span class="toc-text">Linux界面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E4%BD%BF%E7%94%A8%E5%87%AD%E8%AF%81"><span class="toc-number">11.</span> <span class="toc-text">Linux 使用凭证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">12.</span> <span class="toc-text">Linux命令格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E9%AB%98%E6%95%88%E8%8E%B7%E5%8F%96%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF-%E4%B8%80"><span class="toc-number">13.</span> <span class="toc-text">Linux高效获取命令帮助信息(一)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3A%E8%AE%A4%E8%AF%81"><span class="toc-number">13.1.</span> <span class="toc-text">3A认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF"><span class="toc-number">13.2.</span> <span class="toc-text">Linux登录信息:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-etc-x2F-issue"><span class="toc-number">13.3.</span> <span class="toc-text">&#x2F;etc&#x2F;issue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%91%BD%E4%BB%A4%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">13.4.</span> <span class="toc-text">Linux命令分类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#type-%E5%91%BD%E4%BB%A4"><span class="toc-number">13.5.</span> <span class="toc-text">type 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%EF%BC%9A"><span class="toc-number">13.6.</span> <span class="toc-text">路径：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-number">13.7.</span> <span class="toc-text">列出目录：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-l"><span class="toc-number">13.7.1.</span> <span class="toc-text">ls -l</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-h"><span class="toc-number">13.7.2.</span> <span class="toc-text">ls -h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-a"><span class="toc-number">13.7.3.</span> <span class="toc-text">ls -a</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-A"><span class="toc-number">13.7.4.</span> <span class="toc-text">ls -A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-R"><span class="toc-number">13.7.5.</span> <span class="toc-text">ls -R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-r"><span class="toc-number">13.7.6.</span> <span class="toc-text">ls -r</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-i"><span class="toc-number">13.7.7.</span> <span class="toc-text">ls -i</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">13.8.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E9%AB%98%E6%95%88%E8%8E%B7%E5%8F%96%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF-%E4%BA%8C"><span class="toc-number">14.</span> <span class="toc-text">Linux高效获取命令帮助信息(二)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%9A%84%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-number">14.1.</span> <span class="toc-text">Linux的帮助信息：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#man-%EF%BC%9A%E5%B8%AE%E5%8A%A9"><span class="toc-number">14.1.1.</span> <span class="toc-text">man ：帮助</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">15.</span> <span class="toc-text">Linux根文件系统</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Docker/Docker/" title="Docker"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker"/></a><div class="content"><a class="title" href="/Docker/Docker/" title="Docker">Docker</a><time datetime="2022-11-16T13:05:41.566Z" title="发表于 2022-11-16 21:05:41">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/ctfshow%E9%80%86%E5%90%91/" title="ctfshow-逆向"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfshow-逆向"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/ctfshow%E9%80%86%E5%90%91/" title="ctfshow-逆向">ctfshow-逆向</a><time datetime="2022-11-02T12:46:33.146Z" title="发表于 2022-11-02 20:46:33">2022-11-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向工具和bugkure刷题"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向工具和bugkure刷题"/></a><div class="content"><a class="title" href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向工具和bugkure刷题">逆向工具和bugkure刷题</a><time datetime="2022-10-29T02:56:29.633Z" title="发表于 2022-10-29 10:56:29">2022-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/" title="c++学习3数据结构"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习3数据结构"/></a><div class="content"><a class="title" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++3/" title="c++学习3数据结构">c++学习3数据结构</a><time datetime="2022-10-27T03:18:55.851Z" title="发表于 2022-10-27 11:18:55">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++学习2"/></a><div class="content"><a class="title" href="/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/c++%E5%AD%A6%E4%B9%A02%E5%9B%BE%E8%AE%BA/" title="c++学习2">c++学习2</a><time datetime="2022-10-27T03:16:26.260Z" title="发表于 2022-10-27 11:16:26">2022-10-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/cb6a04e0c76f42828ab173cf0555a6a4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By FFF</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
   function initValine () {
     const valine = new Valine(Object.assign({
       el: '#vcomment',
