@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>sql注入 | FFF</title><meta name="keywords" content="sql注入"><meta name="author" content="FFF"><meta name="copyright" content="FFF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概念​       SQL注入（SQL Injection）是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。那什么是SQL了？结构化查询语言（Structured Query Language，缩写：SQL），是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql注入">
+<meta property="og:url" content="https://fffjay.fun/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="FFF">
+<meta property="og:description" content="概念​       SQL注入（SQL Injection）是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。那什么是SQL了？结构化查询语言（Structured Query Language，缩写：SQL），是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20221113215349.png">
+<meta property="article:published_time" content="2023-04-20T13:34:03.210Z">
+<meta property="article:modified_time" content="2023-04-20T15:49:45.208Z">
+<meta property="article:author" content="FFF">
+<meta property="article:tag" content="sql注入">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20221113215349.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://fffjay.fun/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'sql注入',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-20 23:49:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ截图20221113215349.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FFF</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">sql注入</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-20T13:34:03.210Z" title="发表于 2023-04-20 21:34:03">2023-04-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-20T15:49:45.208Z" title="更新于 2023-04-20 23:49:45">2023-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="sql注入"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>​       SQL注入（SQL Injection）是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。那什么是SQL了？结构化查询语言（Structured Query Language，缩写：SQL），是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系型数据库</p>
+<h1 id="漏洞危害"><a href="#漏洞危害" class="headerlink" title="漏洞危害"></a>漏洞危害</h1><p>sql注入漏洞对于数据安全的影响</p>
+<p>数据库信息泄露：数据库中存放的用户隐私信息的泄露</p>
+<p>网页篡改：通过操作数据库对特定网页进行篡改</p>
+<p>网页被挂马，传播恶意软件：修改数据库一些字段的值，嵌入网马链接，进行挂马攻击</p>
+<p>数据库被恶意操作：数据库服务器被攻击，数据库的系统管理员帐户被窜改</p>
+<p>数据库被远程控制，被安装后门：经由数据库服务器提供的操作系统支持，让黑客得以修改或控制操作系统。</p>
+<p>破坏硬盘数据，瘫痪全系统</p>
+<h1 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h1><p>代码层面：</p>
+<ol>
+<li>对输入进行严格的转义和过滤</li>
+<li>使用参数化（Parameterized）：目前有很多ORM框架会自动使用参数化解决注入问题，但其也提供了”拼接”的方式,所以使用时需要慎重!</li>
+<li>PDO预处理 (Java、PHP防范推荐方法：)</li>
+</ol>
+<p>没有进行PDO预处理的SQL，在输入SQL语句进行执行的时候，web服务器自己拼凑SQL的时候有可能会把危险的SQL语句拼凑进去。但如果进行了PDO预处理的SQL，会让MYSQL自己进行拼凑，就算夹带了危险的SQL语句，也不会进行处理只会当成参数传进去，而不是以拼接进SQL语句传进去，从而防止了SQL注入</p>
+<p>网络层面：</p>
+<ol>
+<li>通过WAF设备启用防SQL Inject注入策略（或类似防护系统）</li>
+<li>云端防护（如阿里云盾）</li>
+</ol>
+<h1 id="挖掘漏洞"><a href="#挖掘漏洞" class="headerlink" title="挖掘漏洞"></a>挖掘漏洞</h1><h2 id="注入可能存在的地方"><a href="#注入可能存在的地方" class="headerlink" title="注入可能存在的地方"></a>注入可能存在的地方</h2><p>竟然是sql注入，那么这个地方肯定是与数据库有数据交互的，所以我们可以优先观察那种页面存在传值或者查询的地方。比如url中的GET型传参，如?id&#x3D;1</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/20210612195905209.png" alt="img"></p>
+<p>或者是搜索框，前端将用户输入的数据代入到数据库中进行查询，这种以POST方法进行发送数据。如下这种地方</p>
+<p><img src="https://img-blog.csdnimg.cn/20210612200112789.png" alt="img"></p>
+<p>或者是HTTP请求头部字段如Cookie值，下面会讲到</p>
+<h2 id="漏洞探测"><a href="#漏洞探测" class="headerlink" title="漏洞探测"></a>漏洞探测</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#判断如下闭合方式是否会报错，会报错则肯定存在注入</span><br><span class="line">=test&#x27;                         </span><br><span class="line">=test&quot;                         </span><br><span class="line">#若不报错则判断是否存在布尔盲注，如果页面会有不同的显示在可能存在漏洞</span><br><span class="line">=test&#x27; and -1=-1 or &#x27;</span><br><span class="line">=test&#x27; and -1=-2 or &#x27;  </span><br><span class="line">         </span><br><span class="line">=test&quot; and -1=-1 or &quot;</span><br><span class="line">=test&quot; and -1=-2 or &quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​      目前网站的sql注入基本都能通过漏洞扫描器xray检测出来 ——&gt; xray与burp联动，但是这样<strong>动静太大</strong>（公网上），如果在内网中可以直接挂上xray进行检测。所以在公网时可以手动检测是否存在漏洞，然后在存在漏洞的地方打上*，接着复制整个请求包在txt文档中用<strong>sqlmap -r</strong>进行注入 ——</p>
+<h3 id="get型"><a href="#get型" class="headerlink" title="get型"></a>get型</h3><p>1.进行url编码，在url中进行测试payload需要先进行url编码</p>
+<p><img src="https://img-blog.csdnimg.cn/20210612205739314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTU5MDI4,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>不进行编码的话，也可以用+代替空格，#代替–+ 。 %23代表#，也是注释符</p>
+<p>yysy没复刻</p>
+<h3 id="post型"><a href="#post型" class="headerlink" title="post型"></a>post型</h3><p>如果是post型的话，我们可以用上面的方法进行编码，或者使用+代替空格，也可以不使用，直接像在浏览器中探测一样</p>
+<h1 id="常见的注入手法"><a href="#常见的注入手法" class="headerlink" title="常见的注入手法"></a>常见的注入手法</h1><h2 id="参数类型分类"><a href="#参数类型分类" class="headerlink" title="参数类型分类"></a>参数类型分类</h2><ol>
+<li>数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。</li>
+</ol>
+<p>如 <a target="_blank" rel="noopener" href="http://www.text.com/text.php?id=3">www.text.com/text.php?id=3</a> 对应的sql语句为 select * from table where id&#x3D;3</p>
+<ol start="2">
+<li><p>字符型：字符型注入正好相反</p>
+<p>当输入的参数被当做字符串时，称为字符型。字符型和数字型最大的一个区别在于，数字型不需要单引号来闭合，而字符串一般需要通过引号来闭合的。即看参数是否被引号包裹</p>
+</li>
+</ol>
+<p>例如数字型语句：select * from table where id &#x3D;3</p>
+<p>则字符型如下：select * from table where name&#x3D;’admin’</p>
+<h2 id="注入手法分类"><a href="#注入手法分类" class="headerlink" title="注入手法分类"></a>注入手法分类</h2><p>@   UNION query SQL injection（联合查询注入）<br>@   Error-based SQL injection（错型注入）<br>@   Boolean-based blind SQL injection（基于布尔的盲注）<br>@   Time-based blind SQL injection（基于时间的盲注）<br>@   Stacked queries SQL injection（可多语句查询注入）</p>
+<h2 id="联合查询-union注入"><a href="#联合查询-union注入" class="headerlink" title="联合查询(union注入)"></a>联合查询(union注入)</h2><p>我们以sqli-labs第一关为例来学习联合查询。如下，要求我们传入一个id值过去</p>
+<p>传参?id&#x3D;1</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420222936271.png" alt="image-20230420222936271"></p>
+<p><em>1. 页面观察</em></p>
+<p>当我们输入id&#x3D;1和id&#x3D;2时，页面中name值和password的值是不一样的，说明此时我们输入的数据和数据库有交互并且将数据显示在屏幕上了</p>
+<p><em>2. 注入点判断</em></p>
+<p>开始判断是否存在注入，输入?id&#x3D;1’，页面发生报错，说明后端对我前端的数据输入没有很好的过滤，产生了sql注入漏洞</p>
+<p>继续判断</p>
+<p>?id&#x3D;1’ and 1&#x3D;1 –+  页面正常显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--是注释符，注释掉后面的字，使其组成sql语句</span><br><span class="line">http://localhost:666/Less-1/?id=1&#x27; and 1=1 --+</span><br><span class="line">+是使注释符启动的工具</span><br><span class="line">#也是注释符 但是需要经过url编码</span><br><span class="line">http://localhost:666/Less-1/?id=1&#x27; and 1=1 %23</span><br></pre></td></tr></table></figure>
+
+<p>?id&#x3D;1’ and 1&#x3D;2 –+ 页面不正常显示，说明程序对我们的输入做出了正确的判断，所以注入点就是单引号</p>
+<p><em>3. 判断当前表的字段个数</em></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:666/Less-1/?id=1&#39;">http://localhost:666/Less-1/?id=1&#39;</a> order by 3 –+</p>
+<p>正常显示</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420233958381.png" alt="image-20230420233958381"></p>
+<p>此时显示未知的列，说明此时当前表中只有3列</p>
+<p>order by n，即以表的第n列排序，当排序的那列数字超过了原有的列数就会报错如（Unknown column ‘4’ in ‘order clause’），所以就有了联合查询中的order by n</p>
+<p><em>4. 判断显示位</em></p>
+<p>让union select前面的参数查不出来，所以id&#x3D;-1’</p>
+<p>如下，在name和password中回显了我们的输入，这时我们就随便选一个地方来放置接下来的测试语句。</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420234441105.png" alt="image-20230420234441105"></p>
+<p>第二位和第三位有回显</p>
+<p><em>5. 爆数据库名字</em></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420234616451.png" alt="image-20230420234616451"></p>
+<p><em>6. 爆数据库中的表</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database() --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420234716380.png" alt="image-20230420234716380"></p>
+<p><em>7. 爆表中的字段</em></p>
+<p>我们这里选择一个表，users进行进一步的获取表中的字段值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,group_concat(column_name),3 from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27; --+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420234851438.png" alt="image-20230420234851438"></p>
+<p><em>8. 爆相应字段的所有数据</em></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230420234931548.png" alt="image-20230420234931548"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fffjay.fun">FFF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fffjay.fun/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/">https://fffjay.fun/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fffjay.fun" target="_blank">FFF</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ截图20221113215349.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%BE%8E%E4%BA%9A/%E7%BE%8E%E4%BA%9A21%E5%9B%A2%E4%BD%93/"><img class="prev-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">美亚21团体</div></div></a></div><div class="next-post pull-right"><a href="/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/"><img class="next-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">面试</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FFF</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8D%B1%E5%AE%B3"><span class="toc-number">2.</span> <span class="toc-text">漏洞危害</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E8%8C%83"><span class="toc-number">3.</span> <span class="toc-text">防范</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%96%E6%8E%98%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.</span> <span class="toc-text">挖掘漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">4.1.</span> <span class="toc-text">注入可能存在的地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%8E%A2%E6%B5%8B"><span class="toc-number">4.2.</span> <span class="toc-text">漏洞探测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#get%E5%9E%8B"><span class="toc-number">4.2.1.</span> <span class="toc-text">get型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post%E5%9E%8B"><span class="toc-number">4.2.2.</span> <span class="toc-text">post型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">常见的注入手法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="toc-number">5.1.</span> <span class="toc-text">参数类型分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">5.2.</span> <span class="toc-text">注入手法分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2-union%E6%B3%A8%E5%85%A5"><span class="toc-number">5.3.</span> <span class="toc-text">联合查询(union注入)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%BE%8E%E4%BA%9A/%E7%BE%8E%E4%BA%9A21%E5%9B%A2%E4%BD%93/" title="美亚21团体"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="美亚21团体"/></a><div class="content"><a class="title" href="/%E7%BE%8E%E4%BA%9A/%E7%BE%8E%E4%BA%9A21%E5%9B%A2%E4%BD%93/" title="美亚21团体">美亚21团体</a><time datetime="2023-04-26T12:51:13.096Z" title="发表于 2023-04-26 20:51:13">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/" title="sql注入"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ截图20221113215349.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sql注入"/></a><div class="content"><a class="title" href="/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/" title="sql注入">sql注入</a><time datetime="2023-04-20T13:34:03.210Z" title="发表于 2023-04-20 21:34:03">2023-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/" title="面试"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试"/></a><div class="content"><a class="title" href="/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/" title="面试">面试</a><time datetime="2023-04-14T10:02:04.026Z" title="发表于 2023-04-14 18:02:04">2023-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%9D%A2%E7%BA%B1/%E9%9D%A2%E7%BA%B1/" title="面纱"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面纱"/></a><div class="content"><a class="title" href="/%E9%9D%A2%E7%BA%B1/%E9%9D%A2%E7%BA%B1/" title="面纱">面纱</a><time datetime="2023-04-10T15:02:46.565Z" title="发表于 2023-04-10 23:02:46">2023-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%97%B2%E8%81%8A/%E9%97%B2%E8%81%8A/" title="闲聊"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="闲聊"/></a><div class="content"><a class="title" href="/%E9%97%B2%E8%81%8A/%E9%97%B2%E8%81%8A/" title="闲聊">闲聊</a><time datetime="2023-04-01T17:51:17.564Z" title="发表于 2023-04-02 01:51:17">2023-04-02</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/cb6a04e0c76f42828ab173cf0555a6a4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FFF</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '2m4wH0o4DvcjtnTy0Fj6oeI4-gzGzoHsz',
+      appKey: '2jh3Y6EmI8jS0fCh0Ap1Ki3N',
+      avatar: 'monsterid',
+      serverURLs: 'https://2m4wh0o4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
