@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>玩玩破解 | FFF</title><meta name="keywords" content="逆向"><meta name="author" content="FFF"><meta name="copyright" content="FFF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一到三节较容易 讲了一些基础用法，破解也较容易 NOP大法好 记录一些重要的： CMP EAX,0,这句代码的意思就是比较EAX和零是否相等？比较的结果会影响下一行JNZ这个条件跳转是跳还是不跳？绿色箭头指的位置是TEST EBX,EBX，这句代码的意思是判断EBX的值是否为零？结果会影响下一行JZ这个条件跳转是跳还是不跳？ 我们破解，也叫做逆向，所谓逆向就是从结果往前分析，找到关键跳转，然后你改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩玩破解">
+<meta property="og:url" content="https://fffjay.fun/%E9%80%86%E5%90%91/Docker/index.html">
+<meta property="og:site_name" content="FFF">
+<meta property="og:description" content="一到三节较容易 讲了一些基础用法，破解也较容易 NOP大法好 记录一些重要的： CMP EAX,0,这句代码的意思就是比较EAX和零是否相等？比较的结果会影响下一行JNZ这个条件跳转是跳还是不跳？绿色箭头指的位置是TEST EBX,EBX，这句代码的意思是判断EBX的值是否为零？结果会影响下一行JZ这个条件跳转是跳还是不跳？ 我们破解，也叫做逆向，所谓逆向就是从结果往前分析，找到关键跳转，然后你改">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg">
+<meta property="article:published_time" content="2023-04-01T17:51:17.556Z">
+<meta property="article:modified_time" content="2023-05-14T15:46:33.586Z">
+<meta property="article:author" content="FFF">
+<meta property="article:tag" content="逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://fffjay.fun/%E9%80%86%E5%90%91/Docker/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '玩玩破解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-14 23:46:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FFF</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">玩玩破解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-01T17:51:17.556Z" title="发表于 2023-04-02 01:51:17">2023-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-14T15:46:33.586Z" title="更新于 2023-05-14 23:46:33">2023-05-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%80%86%E5%90%91/">逆向</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="玩玩破解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一到三节"><a href="#一到三节" class="headerlink" title="一到三节"></a>一到三节</h1><p>较容易</p>
+<p>讲了一些基础用法，破解也较容易</p>
+<p>NOP大法好</p>
+<p>记录一些重要的：</p>
+<p>CMP EAX,0,这句代码的意思就是比较EAX和零是否相等？比较的结果会影响下一行JNZ这个条件跳转是跳还是不跳？绿色箭头指的位置是TEST EBX,EBX，这句代码的意思是判断EBX的值是否为零？结果会影响下一行JZ这个条件跳转是跳还是不跳？</p>
+<p>我们破解，也叫做逆向，所谓逆向就是从结果往前分析，找到关键跳转，然后你改一下流程，这就叫做“爆破”。如果继续往前找到验证CALL和算法CALL，就叫做“追码”和“追算法”。</p>
+<h1 id="第四节-两头找线索，中间去破解"><a href="#第四节-两头找线索，中间去破解" class="headerlink" title="第四节 两头找线索，中间去破解"></a>第四节 <strong>两头找线索，中间去破解</strong></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Jump Equal ：相等时跳转 je</span><br><span class="line">Jump No Equal ;非相等时跳转 jne</span><br><span class="line">Jump Zero  ;值 0 时跳转 jz</span><br><span class="line">Jump No Zero ;值非0时跳转 jnz</span><br></pre></td></tr></table></figure>
+
+<p>​		最后一点补充就是“重启验证”。重启验证不是一种算法，而是一种登录账号和密码的方式。一般的软件都是每次登录时要输入账号和密码，点击登录后进行验证，这些动作都是人工的，挺费事的。有些编程人员就想出了一个便捷的方法，就是“重启验证”，你第一次打开软件时需要手工输入账号和密码，然后点击登录，这个时候软件除了执行验证流程以外，还会执行一个操作，就是把你输入的账号和密码自动保存在你的电脑里的一个位置，这样一来，等你下次再打开时，软件会自动读取上次保存的账号和密码，然后自动执行判断，如果正确，就提示“已注册”，如果错误，就提示“未注册”，这就是重启验证，你也可以把这样的软件叫做“自动验证”。我们在深入一下，软件会把我们输入的账号和密码保存在哪里呢？基本上就两个地方可以藏身，一个是注册表里面，一个是新创建的一个文件里，这个文件有可能是TXT格式 ，也有可能是INI格式的，还有可能是其他类型的。知道账号和密码存在哪里对于破解有什么用处呢？非常重要，及其关键，因为对于不同的存放位置，程序在读取账号和密码时会使用不同的命令，比如注册表，会用<strong>RegOpenKeyA</strong>等；比如<strong>TXT</strong>，会用ReadFile；比如<strong>INI</strong>，会用<strong>GetPrivateProfileString</strong>；</p>
+<p>​		这样，我们在OD里面下函数断点时就会有所选择了。这就给我们提供了第二种找破解突破口的线索，就是这些专门的命令，注意一点的是，我们现在的突破口是在验证之前，所以通过这些命令找到代码位置后，要往下去找验证的关键位置，这个和以前说的通过结果往上反查是不同的。到这里，你更清楚一些了吗，通过验证前的函数和验证后的结果都可以做为破解的突破口，最终的目标当然是一致的，就是找到验证的关键位置。</p>
+<h1 id="第五节"><a href="#第五节" class="headerlink" title="第五节"></a>第五节</h1><p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230512153808405.png" alt="image-20230512153808405"></p>
+<p>​		第一个是代码区，就是显示汇编代码的地方，我们查看程序执行代码就看这个区，还记得我们改跳转进行爆破都是在这个区实现的吗？<br>​		第二个是信息区，显示我们程序运行每句代码的相关信息，比如跳转的地址和一些数据，很多时候当我们在真假码比较的代码执行的时候，在信息区会出现真码。<br>​		第三个区是数据区，就是显示程序的数据的地方，我们想看某个地址里面的值，就在这个区域里查看。查看某个地址的数据和在代码区查看某个地址的代码的方法是一样的，就是在所在的区的任意位置按CTRL+G，然后输入地址，点确定</p>
+<p>​		第四个区是寄存器区，里面会显示寄存器，你看的EAX,ECX,EBX,EDX等八个首字母是E的都叫做寄存器。寄存器的作用和程序的其他内存地址一样，都是用来存放数据的，区别就是寄存器在CPU里面，读取数据的速度比从内存地址里要快，所以我们程序里面的很多运算都是把数据从内存地址里面复制到寄存器里面，然后进行运算，运算结束后，再把运算结果复制到内存地址里面，寄存器就等待着下一次的运算任务。所以你会在程序的汇编代码区看到有很多的数据转移命令，比如MOV ，PUSH等等。其实在汇编代码里面把这些数据转移和数据计算的代码去掉，剩下的代码就很有限了，主要剩的就是跳转指令、判断指令和CALL了，到现在你还看不懂汇编代码吗？另外，在这些寄存器里面，我们特别需要关注的就是EAX，我们以前说过，所有子程序也就是CALL的返回值都存放在EAX里面。<br>​		最后一个区是堆栈区。堆栈也是内存的一部分，它的特殊之处就在于它总是和子程序（CALL）相关联，堆栈里面的地址存放的数据有三种类型，一是存放调用某个CALL下面一行代码的地址。二是存放CALL的参数。三是CALL在运行过程中的变量值。我们如果想“追码”和了解验证的“算法”，那么我们就需要进入验证CALL，这个时候堆栈就起了关键的提示作用了，堆栈里面会先显示出假码，因为假码是验证CALL的参数，接着出现验证CALL下面一行语句的地址，最后会显示出验证CALL里面计算出的数值，就是变量值，如果没有加密的话，就会显示出计算出来的真码。</p>
+<h1 id="第六节"><a href="#第六节" class="headerlink" title="第六节"></a>第六节</h1><p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230512155017034.png" alt="image-20230512155017034"></p>
+<pre><code>  当程序在执行过程中暂停的时候，大家看一下OD右下角的“堆栈区”，里面会有三个返回到，这个很重要，我分别用黄色、蓝色、绿色的箭头进行标记。为什么说它重要呢？我们前面说过，在堆栈区存放的数据是和子程序（CALL）相关的数据，还记得吗？会存放CALL的参数、调用CALL的下一行语句的地址、CALL里面的变量值。这三个返回到表示调用了三个子程序（CALL）,调用的先后顺序是我标记的从下往上的1、2、3，也就是说当一个当程序暂停的时候，我们观察堆栈区，每个返回到都表示执行了一个子程序（CALL），最下面的是先执行的CALL，这样你就明白CALL的调用顺序了吧。知道调用顺序有什么用呢？当然有用，因为我们玩破解，方法不就是根据验证结果进行反查吗？既然是反查，当然要找上一次执行了哪个CALL，就是要在堆栈区往下找“返回到”。
+  
+      弹出“登陆失败”信息框可以使用MessageBoxA函数下断点使在信息框弹出之前断下；
+      具体操作是：插件--&gt;API断点设置工具--&gt;常用断点设置--&gt;勾选MessageBoxA；
+      设置完之后先运行输入账号密码点击登录就到第一步了。
+</code></pre>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230512160653489.png" alt="image-20230512160653489"></p>
+<p>CALL到MessageBoxA,意思是马上要执行的就是弹出对话框，再看绿色箭头指的“返回到”，最下面的是最早执行的CALL，最上面的返回到是刚执行过的CALL，第一行是即将要执行的，那么我们进行反查，就要先从最上方那个刚执行过的CALL来进行。我们怎么做呢？就是在第一个返回到那一行点鼠标右键，在提示菜单里选择“反汇编窗口跟随”</p>
+<p>跟踪到反汇编窗口中，上面的CALL就是我们最新执行过的子程序</p>
+<p>更证明了堆栈区会存放CALL的下一句的代码地址，我们也称为返回地址</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230512161333208.png" alt="image-20230512161333208"></p>
+<p>​		而我们堆栈区最上面的CALL到MessageBoxA弹出信息框命令的代码就在蓝色方框内的CALL里面，那么我们想一想，如果上面有跳转能够跳过蓝色方框内的CALL，是不是程序就不会执行MessageBoxA弹出信息框这个命令了，我们是不是就成功破解了?是的，就是如此。我们现在欣喜的发现上面正好有一个JMP可以跳过，但是别高兴，在JMP下面一行语句前有一个白色向右的小箭头，表示上面还有一个跳转会跳到这里，所以，我们只要往上找这个跳转，不让这个跳转实现就成功破解了。呵呵，会了吗？你可能还会提出，如果我没有发现有跳转能跳过蓝色方框里的CALL怎么办？很简单，那你就在堆栈区从上往下找“返回到”，看看哪个返回到的CALL上面有跳转能跳过，就可以了</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230512164216965.png" alt="image-20230512164216965"></p>
+<p>堆栈三列的内容我的理解是：分别是指针的地址，指针指向的地址，指向的地址村的数据，其中指针的地址中存放的数据的就是指针指向的地址</p>
+<p>第一个文件尝试了一下午也没有成功，先看下一道吧</p>
+<p>以相同配置再次点击运行，不输密码直接登录，跟随第一个返回的汇编代码，将call上方的je改为jmp</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230512183451964.png" alt="image-20230512183451964"></p>
+<p>再次点击运行</p>
+<p>md卡了我两天 我发现修改之后点击运行和别人的不一样，原来在做出修改后，在弹出未修改的版本后，需再点击一下登录重新加载</p>
+<h1 id="第七节"><a href="#第七节" class="headerlink" title="第七节"></a>第七节</h1><p>一是了解堆栈区里面的“返回到”的重要作用，要清楚最下方的返回到是最先执行的CALL，我们断下程序，要从最上面的“返回到”一步步反查程序的执行流程。<br>二是OD里面的F9、F8、F7的功能，F9是运行程序，F8是一步步执行程序代码,F7是进入CALL的钥匙。</p>
+<h2 id="一、CTRL-F9"><a href="#一、CTRL-F9" class="headerlink" title="一、CTRL+F9"></a><strong>一、CTRL+F9</strong></h2><p>这个指令我们<a target="_blank" rel="noopener" href="https://www.52pojie.cn/">破解</a>常用。它的作用是什么呢？就是当你断下程序以后，按一下CTRL+F9就可以让程序快速执行到你现在运行的子程序代码的结尾处。好处就是当你不想具体看这个子程序的每一句代码执行的情况了，你就可以按键盘上的CTRL+F9直接运行到子程序的结尾的位置停下来，如果再按一次F8，你就到了调用这个CALL的下一句代码。我举个例子，如果我们要破解的软件是有错误提示的信息框。那么我们常用的方法就是在MessageBoxA这个函数上下一个断点，那么当你运行程序，输入账号密码点登陆后，程序会停到什么代码的位置？会停在MessageBoxA这个函数的第一句代码，函数也是子程序，不过是计算机的操作系统提供的面向所有运行在操作系统之上的软件的固定的子程序，这个函数（子程序）的代码是微软事先就写好了的，我们程序员在编写软件的时候，不管是用C语言、VB还是易语言，我们都不需要重新来写一些系统已经写好的函数，我们只需要给操作系统一个调用这个函数的命令就可以了</p>
+<p><strong>怎么分辨是软件作者自写的代码还是操作系统提供的代码</strong></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230513160630141.png" alt="image-20230513160630141"></p>
+<p>看红色方框内的代码地址，都是004…..,这些就叫做小地址。我们再看黄色箭头指的位置，上面写着CM3，就是我们要破解的软件的名字，就更加证实我们目前程序暂停在作者自写的代码上，也可以形象的说“我们现在处在程序领空”。<br>我们再来看一张图，对比一下：</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230513160651967.png" alt="image-20230513160651967"></p>
+<p>现在红色方框内的地址都是7开头的，这就是大地址。我们再看黄色箭头指的位置显示USER32,不再是我们要破解的软件的名字CM3，这就说明目前程序暂停的代码位置不是作者自写的代码内，而是在操作系统提供的函数（子程序）代码内，我们也可以形象的说“我们目前处在系统领空”。</p>
+<p><strong>知道程序此刻停在程序领空还是系统领空对于我们破解有什么用处呢？大家想想，我们要实现破解一个软件，如果是爆破就是修改一些跳转指令或者是EAX的值，如果是追码和研究算法，我们就要进入到验证CALL里面，那么我们要修改的代码或者是验证CALL，是作者自写的代码还是操作系统提供好的代码？答案只能是一个，就是一定是软件作者自写的代码，因为每个不同的软件的登录账号和密码都不同，说明验证算法是不同的，而验证算法是每个作者自己去写的，或者是复制了别人已经写好的算法代码，但绝不是操作系统提供的。</strong></p>
+<p>分析至此，我们可以得到一个非常重要的结论，就是“<strong>破解软件只需要关注软件作者自写的代码</strong>！”，<strong>换个词就是“我们要时常注意把自己停留在程序领空”。好了，说了这么多，和我们要讲的CTRL+F9有什么关系，关系就是当我们发现此刻程序停留在系统领空以后，我们就赶快按CTRL+F9执行到系统函数的结尾处，因为你花时间看系统函数内部的代码完全是浪费时间，明白了吗？</strong></p>
+<p>，那我按一次CTRL+F9到函数结尾处，再按一次F8是不是就到了程序领空？未必，有可能你还是处在系统领空，你必须再按CTRL+F9，如果还没有到，再继续，你可能说，那不累死了吗？有什么好办法，能够一下子就从系统领空回到程序领空？有，必须有。就是下面要说的一个指令。</p>
+<h2 id="二、ALT-F9"><a href="#二、ALT-F9" class="headerlink" title="二、ALT+F9"></a><strong>二、ALT+F9</strong></h2><p>这个指令就厉害了，<strong>作用就是当程序暂停在系统领空的时候，你按一下ALT+F9,程序就一下子就执行完当前系统领空的代码回到了程序领空</strong>。这样就省事了吧。所以我们破解的时候，经常用的手法就是在诸如MessageBoxA这样的操作系统提供的函数下断点，程序断下来后，就按一下ALT+F9从系统领空返回到程序领空，再分析代码。提醒一下，如果是MessageBoxA函数，你按完ALT+F9后你会发现并没有返回到程序领空，怎么回事？很简单，<strong>你需要把错误提示信息框关闭，然后程序就自动返回到程序领空了</strong>，因为错误信息框在等待用户操作，你不操作，程序就一直停留在等待操作的状态中。</p>
+<p>这个指令就厉害了，作用就是当程序暂停在系统领空的时候，你按一下ALT+F9,程序就一下子就执行完当前系统领空的代码回到了程序领空。这样就省事了吧。所以我们破解的时候，经常用的手法就是在诸如MessageBoxA这样的操作系统提供的函数下断点，程序断下来后，就按一下ALT+F9从系统领空返回到程序领空，再分析代码。提醒一下，如果是MessageBoxA函数，你按完ALT+F9后你会发现并没有返回到程序领空，怎么回事？很简单，你需要把错误提示信息框关闭，然后程序就自动返回到程序领空了，因为错误信息框在等待用户操作，你不操作，程序就一直停留在等待操作的状态中。</p>
+<h2 id="三、F4"><a href="#三、F4" class="headerlink" title="三、F4"></a><strong>三、F4</strong></h2><p>F4的作用，就是你需要程序代码停在哪里，你就在这行代码上按键盘上的F4，然后按F9运行，程序就停在这行代码上了，你可以把F4比做出租车，招手就行，随时随地都可，当然，现实中出租车司机都是守规矩的，不能乱停，呵呵。</p>
+<h2 id="四、F2"><a href="#四、F2" class="headerlink" title="四、F2"></a><strong>四、F2</strong></h2><p>这个是我们在OD里最常用的。我们经常说给程序下断，怎么下断呢？就是在你要断的代码的位置上按一下F2就可以了，程序执行到这里就会停止待命，然后你就可以按F8一句一句代码往下运行，遇到可疑的CALL就按F7进去看看，不想看了就按CTRL+F9返回到CALL的结尾处，如果是系统领空，就直接按ALT+F9一步返回到程序领空。学会了以上的指令，你基本上就可以用OD破解软件了，还有一些其他的使用方法，我会放在以后的课程中穿插讲解。</p>
+<h1 id="第八节"><a href="#第八节" class="headerlink" title="第八节"></a>第八节</h1><p>一、破解有错误信息提示的软件</p>
+<p>软件名称：CM（有错误提示）</p>
+<p>当我们遇到有错误信息提示的软件，那么我们该如何破解呢？首先想到的方法就是搜索错误信息字符串。好，我们操作一下。</p>
+<p>第一步：先查壳</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514103306030.png" alt="image-20230514103306030"></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514103516094.png" alt="image-20230514103516094"></p>
+<p>带壳的时候die能可查编写语言</p>
+<p>确定是UPX壳，是VC语言编写的。<br>这时我们有两种选择，一种是先<a target="_blank" rel="noopener" href="https://www.52pojie.cn/forum-5-1.html">脱壳</a>再用OD分析，一种是不脱壳直接用OD分析。</p>
+<p>用工具脱壳</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514104658933.png" alt="image-20230514104658933"></p>
+<p>脱壳后</p>
+<p>在代码区按鼠标右键，选择“复制到可执行文件”菜单中的“所有修改”。</p>
+<p>然后选择全部复制</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514105303081.png" alt="image-20230514105303081"></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514105318416.png" alt="image-20230514105318416"></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514105236119.png" alt="image-20230514105236119"></p>
+<p>在此方框中右键保存文件</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514105352011.png" alt="image-20230514105352011"></p>
+<p>破解成功</p>
+<p>不脱壳时，拖入od，询问是否分析，选否</p>
+<p>因为OD都说了，它分析的不可靠，那你还让它分析干什么，所以点“否”，不影响我们正常使用OD的功能。然后，请注意，这个时候，你直接进行“智能搜索”是搜不到关键字符串的。</p>
+<p>我们一般的做法是按F9把程序运行起来，然后在代码区按CTRL+G转到00401000这个位置，见下图:</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514132134378.png" alt="image-20230514132134378"></p>
+<p>此时，你再搜索字符串就可以搜到关键字符串了，接下来的步骤就和前面讲的一样了，所以说，当我们遇到带壳的程序，而我们不会脱壳也不用怕，就直接拖到OD，运行程序，然后转到00401000处，再去搜索。</p>
+<p>美中不足的是，有壳的程序虽然可以用这种方法来分析，找到关键位置，但是你修改代码以后无法保存，呵呵，无语了吧！别急，我们还是有办法的，用一个内存补丁工具就可以解决了。</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514132346969.png" alt="image-20230514132346969"></p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514132900266.png" alt="image-20230514132900266"></p>
+<h1 id="第九节"><a href="#第九节" class="headerlink" title="第九节"></a>第九节</h1><p>下面我们来具体分析一下，我们可以把找不到错误提示信息的软件分为两大类。</p>
+<p><strong>第一类是当我们点登陆后，我们明明看到错误提示，但是在OD里就是搜不到。</strong><br><strong>第二类是当我们点登陆后，没有任何提示，所谓“这里的黎明静悄悄”。</strong></p>
+<p>相比之下，第二类应该比第一类更难。</p>
+<p>我们先分析第一类。首先思考一下，为什么软件在运行时明明有错误提示，但是我们的OD会看不到。我们刚才说了，这是因为编写软件者在编写读取关键字符串的代码上做了手脚，导致我们用OD搜不到。至于做了手脚，我们不用管它，现在摆在我们面前的就是一个现实——搜不到字符串，我们找不到破解的突破口。</p>
+<p><strong>即使F9运行程序，转到00401000处，再搜，还是搜不到。</strong><br><strong>怎么办呢？</strong></p>
+<p>一种办法就是既然有提示字符串，我们就继续换方法搜。</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514222702055.png" alt="image-20230514222702055"></p>
+<p>选择M</p>
+<p>进入内存映射</p>
+<p>滑到最上端</p>
+<p>要选中第一行 因为他从上往下一条条搜</p>
+<p>右键选择查找</p>
+<p>输入登陆失败</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514223013756.png" alt="image-20230514223013756"></p>
+<p>好怪😨</p>
+<p>nnd打错字了</p>
+<p>是登录失败 我说搜不到</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514223727028.png" alt="image-20230514223727028"></p>
+<p>记录下登录失败的地址</p>
+<p>00481BAF</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514223854643.png" alt="image-20230514223854643"></p>
+<p>再点C 回到原来的页面</p>
+<p>然后你就在<strong>数据窗口</strong>用CTRL+G，然后在红色箭头位置输入我们刚才记下的地址00481BAF，点确定。来到下图：</p>
+<p>按完以后，我们就回到了最初的OD显示的代码窗口页面，“C”按钮代表CPU，因为我们的代码窗口也叫做CPU窗口。你再看看，在“C”旁边还有几个英文字符的按钮，这是OD给我们提供的快速在不同页面转换的按钮，比如你按一下“B”按钮，就会出现我们已经下过的所有断点，B就叫做断点窗口。</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514224553697.png" alt="image-20230514224553697"></p>
+<p>然后你在红色箭头指的位置，也就是00481BAF右边的数据上用鼠标<strong>左键选中第一行</strong>，就是紫色部分，然后点鼠标右键选择“断点”菜单中的“内存访问”，这样我们就在00481BAF这个地址下了一个“内存断点”，这个断点的意思就是当我们的程序在执行过程中读取这个地址中的数据，程序就会暂停。我们想一想，00481BAF这个地址里存放的数据不就是“登录失败”字符串吗？我们的目的就是当程序执行中只要读取“登录失败”字符串就会暂停下来，此刻程序停留的位置就接近关键代码了。</p>
+<p>好，我们继续，下完“内存断点”后，我们按F9让程序运行起来，然后输入登录账号和密码，点登陆，OD会立刻停下来，见下图：</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514224853526.png" alt="image-20230514224853526"></p>
+<p>接下来，我们首先要干的事情，就是在绿色箭头指的位置（也就是我们刚才下内存断点的位置）鼠标右键，选择里面的“删除内存断点”菜单，因为我们已经断下来了，不需要了。</p>
+<p>然后按F8一句一句代码往下跟，不用做任何修改，返回上一层CALL，不同的编写语言以及作者编写代码的不同会导致返回的次数不同，我们这个软件返回了三层，所谓返回三层就是遇到了三次RETN，RETN后就会返回到上一级调用处。见下图：</p>
+<p><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/image-20230514234020456.png" alt="image-20230514234020456"></p>
+<p>返回三次后，我们的代码会执行到0040137A，这个时候就是关键位置了，你看上面有一个大跳转JMP可以跳过我们的停留位置，这就非常可疑了，jmp上面还有一个大跳转跳到它下面，我们可以猜测一下，如果JMP下面的跳转不实现，那么JMP就可以跳过我们现在的代码，而我们此刻的代码就是根据“登录失败”这个错误信息跟过来的，那么也就是说JMP很可能就会跳过“登录失败”这个错误信息，我们不就成功破解了吗？</p>
+<p>jmp能跳过登录失败</p>
+<p>而上面有一个je跳过了他使他登陆失败</p>
+<p>nop掉他</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fffjay.fun">FFF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fffjay.fun/%E9%80%86%E5%90%91/Docker/">https://fffjay.fun/%E9%80%86%E5%90%91/Docker/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fffjay.fun" target="_blank">FFF</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/ctf%E5%AD%A6%E4%B9%A0/php/"><img class="prev-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">php</div></div></a></div><div class="next-post pull-right"><a href="/uncategorized/hello-world/"><img class="next-cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/cb6a04e0c76f42828ab173cf0555a6a4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/ctf%E5%AD%A6%E4%B9%A0/b%E7%AB%99%E9%80%86%E5%90%91%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/" title="b站逆向视频"><img class="cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">b站逆向视频</div></div></a></div><div><a href="/ctf%E5%AD%A6%E4%B9%A0/ctfshow%E9%80%86%E5%90%91/" title="ctfshow-逆向"><img class="cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/ea581833bb3743ce9dde81e4531e2fbd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">ctfshow-逆向</div></div></a></div><div><a href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%91/" title="逆向基础知识以及部分加解密算法"><img class="cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">逆向基础知识以及部分加解密算法</div></div></a></div><div><a href="/ctf%E5%AD%A6%E4%B9%A0/%E9%80%86%E5%90%912/" title="逆向工具和刷题"><img class="cover" src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/5c23d52f880511ebb6edd017c2d2eca2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">逆向工具和刷题</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ图片20220719190525.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FFF</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E5%88%B0%E4%B8%89%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">一到三节</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E4%B8%A4%E5%A4%B4%E6%89%BE%E7%BA%BF%E7%B4%A2%EF%BC%8C%E4%B8%AD%E9%97%B4%E5%8E%BB%E7%A0%B4%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">第四节 两头找线索，中间去破解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%8A%82"><span class="toc-number">3.</span> <span class="toc-text">第五节</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E8%8A%82"><span class="toc-number">4.</span> <span class="toc-text">第六节</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E8%8A%82"><span class="toc-number">5.</span> <span class="toc-text">第七节</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81CTRL-F9"><span class="toc-number">5.1.</span> <span class="toc-text">一、CTRL+F9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81ALT-F9"><span class="toc-number">5.2.</span> <span class="toc-text">二、ALT+F9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81F4"><span class="toc-number">5.3.</span> <span class="toc-text">三、F4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81F2"><span class="toc-number">5.4.</span> <span class="toc-text">四、F2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E8%8A%82"><span class="toc-number">6.</span> <span class="toc-text">第八节</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E8%8A%82"><span class="toc-number">7.</span> <span class="toc-text">第九节</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%BE%8E%E4%BA%9A/%E7%BE%8E%E4%BA%9A21%E5%9B%A2%E4%BD%93/" title="美亚21团体"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="美亚21团体"/></a><div class="content"><a class="title" href="/%E7%BE%8E%E4%BA%9A/%E7%BE%8E%E4%BA%9A21%E5%9B%A2%E4%BD%93/" title="美亚21团体">美亚21团体</a><time datetime="2023-04-26T12:51:13.096Z" title="发表于 2023-04-26 20:51:13">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/" title="sql注入"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/QQ截图20221113215349.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sql注入"/></a><div class="content"><a class="title" href="/sql%E6%B3%A8%E5%85%A5/sql%E6%B3%A8%E5%85%A5/" title="sql注入">sql注入</a><time datetime="2023-04-20T13:34:03.210Z" title="发表于 2023-04-20 21:34:03">2023-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/" title="面试"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/71e52c67f5094e44b92ccaed93db15c5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试"/></a><div class="content"><a class="title" href="/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/" title="面试">面试</a><time datetime="2023-04-14T10:02:04.026Z" title="发表于 2023-04-14 18:02:04">2023-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%9D%A2%E7%BA%B1/%E9%9D%A2%E7%BA%B1/" title="面纱"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面纱"/></a><div class="content"><a class="title" href="/%E9%9D%A2%E7%BA%B1/%E9%9D%A2%E7%BA%B1/" title="面纱">面纱</a><time datetime="2023-04-10T15:02:46.565Z" title="发表于 2023-04-10 23:02:46">2023-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%97%B2%E8%81%8A/%E9%97%B2%E8%81%8A/" title="闲聊"><img src="https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/c53c811f880411ebb6edd017c2d2eca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="闲聊"/></a><div class="content"><a class="title" href="/%E9%97%B2%E8%81%8A/%E9%97%B2%E8%81%8A/" title="闲聊">闲聊</a><time datetime="2023-04-01T17:51:17.564Z" title="发表于 2023-04-02 01:51:17">2023-04-02</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://skymirror-1314071370.cos.ap-beijing.myqcloud.com/cb6a04e0c76f42828ab173cf0555a6a4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FFF</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '2m4wH0o4DvcjtnTy0Fj6oeI4-gzGzoHsz',
+      appKey: '2jh3Y6EmI8jS0fCh0Ap1Ki3N',
+      avatar: 'monsterid',
+      serverURLs: 'https://2m4wh0o4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
